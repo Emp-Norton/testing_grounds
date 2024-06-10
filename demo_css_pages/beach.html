@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List</title>
+</head>
+<body>
+<ul id="item-list"></ul>
+<button id="add-item" class="stunner">Add Item</button>
+<div style="position: absolute" background-image="linear-gradient(45deg, red 5%, blue 50%, green 100%"> </div>
+<script>
+  const itemList = document.getElementById('item-list');
+  const addItemButton = document.getElementById('add-item');
+
+  let itemCount = 0;
+
+  addItemButton.addEventListener('click', () => {
+    itemCount++;
+    const listItem = document.createElement('li');
+    listItem.innerText = `Item ${itemCount}`;
+    const removeButton = document.createElement('button');
+    removeButton.innerText = 'Remove';
+    removeButton.addEventListener('click', () => {
+      itemList.removeChild(listItem);
+    });
+    listItem.appendChild(removeButton);
+    itemList.appendChild(listItem);
+  });
+</script>
+</body>
+</html>
+
+<style>
+  .stunner {
+    transform: scale(3);
+    margin: 25px;
+  position: relative;
+    margin: 200px;
+    background: transparent;
+
+  }
+  .stunner:hover{
+    animation: marquis 1s alternate-reverse infinite;
+  }
+  @keyframes marquis {
+    0% {
+      box-shadow: 5px -5px 15px 1px background: linear-gradient(45deg, red 5%, blue 25%, green 85%);
+    }
+    25% {
+      box-shadow: 5px 5px 15px 1px lightblue;
+    }
+    50% {
+      box-shadow: -5px 5px 15px 1px darkslateblue;
+    }
+    100% {
+      box-shadow: -5px -5px 15px 1px mediumpurple;
+    }
+
+  }
+
+  @keyframes flagwave {
+    0%{
+      background: linear-gradient(45deg, red 5%, orange 25%, yellow 50%, green 75%, blue 100%);
+    }
+    50% {
+      background: linear-gradient(45deg, red 25%, orange 50%, yellow 75%, green 100%, blue 5%);
+    }
+    100%{
+      background: linear-gradient(45deg, red 50%, orange 75%, yellow 100%, green 5%, blue 25%);
+    }
+  }
+</style>
