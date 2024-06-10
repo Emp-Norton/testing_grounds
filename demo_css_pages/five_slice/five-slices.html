@@ -1,3 +1,8 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./five_slices.css"/>
+</head>
+<body>
 <div class="cont s--inactive">
     <!-- cont inner start -->
     <div class="cont__inner">
@@ -114,10 +119,35 @@
     </div>
     <!-- cont inner end -->
 </div>
+</body>
 
-<a href="https://dribbble.com/shots/2802024-Satellite-Website-Prototype" target="_blank" class="icon-link">
-    <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
-</a>
-<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
-    <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
-</a>
+<script>
+    const dostuff = () => {
+        var $cont = document.querySelector('.cont');
+        var $elsArr = [].slice.call(document.querySelectorAll('.el'));
+        var $closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
+        setTimeout(function() {
+            $cont.classList.remove('s--inactive');
+        }, 200);
+
+        $elsArr.forEach(function($el) {
+
+            $el.addEventListener('click', function() {
+                if (this.classList.contains('s--active')) return;
+                $cont.classList.add('s--el-active');
+                this.classList.add('s--active');
+            });
+        });
+        $closeBtnsArr.forEach(function($btn) {
+
+            $btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                $cont.classList.remove('s--el-active');
+                document.querySelector('.el.s--active').classList.remove('s--active');
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', dostuff)
+</script>
+</html>
